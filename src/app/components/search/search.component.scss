@@ -1,0 +1,65 @@
+.search-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  h2 {
+    margin-top: 0;
+    color: #333;
+  }
+}
+
+.search-form {
+  margin-bottom: 24px;
+}
+
+.search-field {
+  width: 100%;
+}
+
+.results-container {
+  min-height: 200px;
+}
+
+.loading-container, .error-container, .no-results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  
+  p {
+    margin-top: 16px;
+    color: #666;
+    text-align: center;
+  }
+  
+  mat-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    opacity: 0.7;
+  }
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.drink-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5c6bc0;
+  }
+}

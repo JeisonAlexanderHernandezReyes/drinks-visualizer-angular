@@ -1,0 +1,33 @@
+.dialog-container {
+  min-width: 300px;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  
+  mat-icon {
+    margin-right: 8px;
+    color: #5c6bc0;
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  h2 {
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-dialog-actions {
+  padding: 16px 0;
+}

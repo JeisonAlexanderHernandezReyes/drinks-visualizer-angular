@@ -1,0 +1,67 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <mat-icon>local_cafe</mat-icon>
+    <h2 mat-dialog-title>{{ data.title }}</h2>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()">
+      <!-- Name Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Drink Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter drink name">
+        <mat-icon matSuffix>coffee</mat-icon>
+        <mat-error *ngIf="drinkForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="drinkForm.get('name')?.hasError('minlength')">
+          Name must not be empty
+        </mat-error>
+        <mat-error *ngIf="drinkForm.get('name')?.hasError('pattern')">
+          Name contains invalid characters
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Size Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Size</mat-label>
+        <mat-select formControlName="size">
+          <mat-option *ngFor="let option of sizeOptions" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>straighten</mat-icon>
+        <mat-error *ngIf="drinkForm.get('size')?.hasError('required')">
+          Size is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Price Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" placeholder="Enter price" type="number" step="0.01" min="0.01">
+        <mat-icon matSuffix>attach_money</mat-icon>
+        <mat-error *ngIf="drinkForm.get('price')?.hasError('required')">
+          Price is required
+        </mat-error>
+        <mat-error *ngIf="drinkForm.get('price')?.hasError('min')">
+          Price must be greater than 0
+        </mat-error>
+        <mat-error *ngIf="drinkForm.get('price')?.hasError('pattern')">
+          Price must be a valid number (e.g. 3.50)
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      [disabled]="!drinkForm.valid" 
+      (click)="onSubmit()">
+      {{ isEditing ? 'Update' : 'Add' }}
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,54 @@
+<div class="search-container">
+  <h2>Search Drinks</h2>
+  
+  <div class="search-form">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search by name</mat-label>
+      <input matInput [formControl]="searchControl" placeholder="Type at least 2 characters">
+      <mat-icon matPrefix>search</mat-icon>
+      <button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-hint>Enter a drink name to search</mat-hint>
+    </mat-form-field>
+  </div>
+  
+  <div class="results-container">
+    <!-- Loading state -->
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Searching...</p>
+    </div>
+    
+    <!-- Error state -->
+    <div *ngIf="error" class="error-container">
+      <mat-icon color="warn">error</mat-icon>
+      <p>{{ error }}</p>
+    </div>
+    
+    <!-- No results state -->
+    <div *ngIf="noResults && !isLoading && !error" class="no-results-container">
+      <mat-icon>search_off</mat-icon>
+      <p>No drinks found matching "{{ searchControl.value }}"</p>
+    </div>
+    
+    <!-- Results -->
+    <div *ngIf="drinks.length > 0 && !isLoading" class="results-grid">
+      <mat-card *ngFor="let drink of drinks" class="drink-card" (click)="viewDrinkDetails(drink)">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>local_cafe</mat-icon>
+          <mat-card-title>{{ drink.name }}</mat-card-title>
+          <mat-card-subtitle>{{ drink.size === 'S' ? 'Small' : drink.size === 'M' ? 'Medium' : 'Large' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="price">{{ drink.price | currency }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">
+            <mat-icon>info</mat-icon> DETAILS
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
