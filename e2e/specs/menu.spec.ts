@@ -1,4 +1,3 @@
-// e2e/specs/menu.spec.ts
 import { By } from 'selenium-webdriver';
 import { driver, takeScreenshotOnFailure } from '../helpers/spec-helper';
 import { MenuPage } from '../pages/menu-page';

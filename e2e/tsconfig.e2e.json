@@ -2,8 +2,9 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
       "outDir": "../out-tsc/e2e",
-      "module": "commonjs",
+      "module": "es2015",  // Cambiado de "commonjs" a "es2015"
       "target": "es2018",
+      "moduleResolution": "node", // Añadir esta línea
       "types": [
         "jasmine",
         "node",
@@ -13,4 +14,4 @@
     "include": [
       "**/*.ts"
     ]
-  }
+}
