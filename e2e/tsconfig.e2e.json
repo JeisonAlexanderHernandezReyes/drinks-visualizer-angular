@@ -2,9 +2,9 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
       "outDir": "../out-tsc/e2e",
-      "module": "es2015",  // Cambiado de "commonjs" a "es2015"
+      "module": "commonjs",  // Cambiado de "es2015" a "commonjs"
       "target": "es2018",
-      "moduleResolution": "node", // Añadir esta línea
+      "moduleResolution": "node", 
       "types": [
         "jasmine",
         "node",
